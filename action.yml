@@ -1,0 +1,57 @@
+name: Build an extension zip using Shopware-CLI
+description: Zip a Shopware extension using shopware-cli with GitHub Actions cache support
+author: shopware AG
+branding:
+  icon: package
+  color: blue
+inputs:
+  path:
+    description: "Path to the extension"
+    required: true
+    default: "."
+  branch:
+    description: "Branch / tag to check out via Git before zipping (passed as the second positional argument)"
+    required: false
+    default: ""
+  output-directory:
+    description: "Output directory for the zip file"
+    required: false
+    default: ""
+  filename:
+    description: "Name of the zip file. If not set, it is generated from the extension name and tag"
+    required: false
+    default: ""
+  git-commit:
+    description: "Commit hash / tag to use"
+    required: false
+    default: ""
+  disable-git:
+    description: "Use the source folder as it is, without a Git checkout"
+    required: false
+    default: "false"
+  release:
+    description: "Release mode (remove app secrets)"
+    required: false
+    default: "false"
+  use-git-tag-as-version:
+    description: "Use the detected git tag as the extension version"
+    required: false
+    default: "false"
+  overwrite-version:
+    description: "Change the extension version to this value"
+    required: false
+    default: ""
+  overwrite-app-backend-url:
+    description: "Change all URLs in manifest.xml to this URL"
+    required: false
+    default: ""
+  overwrite-app-backend-secret:
+    description: "Change the app secret to this value"
+    required: false
+    default: ""
+outputs:
+  zip:
+    description: "Path to the generated zip file"
+runs:
+  using: "node24"
+  main: "dist/index.js"

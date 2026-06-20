@@ -1,0 +1,30 @@
+{
+	"name": "build-extension-zip-action",
+	"version": "1.0.0",
+	"description": "GitHub Action to zip a Shopware extension using shopware-cli with GitHub Actions cache support",
+	"type": "module",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "ncc build src/main.ts -o dist --minify --transpile-only",
+		"typecheck": "tsc --noEmit",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"github-action",
+		"shopware",
+		"shopware-cli",
+		"extension",
+		"zip"
+	],
+	"author": "shopware AG",
+	"license": "MIT",
+	"dependencies": {
+		"@actions/core": "^1.11.1",
+		"@actions/exec": "^1.1.1"
+	},
+	"devDependencies": {
+		"@types/node": "^24.0.0",
+		"@vercel/ncc": "^0.38.3",
+		"typescript": "^5.7.2"
+	}
+}
